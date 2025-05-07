@@ -1,0 +1,14 @@
+.job-listing-container{
+    margin-top: 80px;
+}
+.search-bar {
+    /* margin-bottom: 16px; */
+    margin: 20px;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

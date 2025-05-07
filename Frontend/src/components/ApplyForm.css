@@ -1,0 +1,44 @@
+/* ApplyForm.css */
+.apply-form-container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.apply-form-container h2 {
+    margin-bottom: 20px;
+}
+
+.apply-form-container form div {
+    margin-bottom: 15px;
+}
+
+.apply-form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.apply-form-container input,
+.apply-form-container textarea,
+.apply-form-container select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.apply-form-container button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-form-container button:hover {
+    background-color: #45a049;
+}

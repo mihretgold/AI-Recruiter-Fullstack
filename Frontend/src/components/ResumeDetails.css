@@ -1,0 +1,63 @@
+/* ResumeDetails.css */
+.resume-detail-container {
+    margin-top: 100px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    /* Thin border */
+    border-radius: 8px;
+    background-color: #ffffff;
+    /* White background for a clean look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    max-height: 80vh;
+    overflow-y: auto;
+    /* Enable vertical scrolling if content exceeds max height */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Add gap between elements */
+}
+
+.resume-detail-container h4 {
+    margin-bottom: 16px;
+    font-size: 1.6rem;
+    color: #333;
+    /* Darker text color for better readability */
+    font-weight: 600;
+    /* Slightly bolder font for headings */
+}
+
+.resume-detail-container p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+    /* Slightly lighter text color */
+    line-height: 1.5;
+    /* Improve readability with line-height */
+}
+
+.resume-detail-container .resume-text {
+    white-space: pre-wrap;
+    /* Preserve whitespace formatting */
+}
+
+.rank-jobs-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #007bff;
+    /* Primary button color */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions */
+    margin-top: 10px;
+}
+
+.rank-jobs-button:hover {
+    background-color: #0056b3;
+    /* Darker shade for hover effect */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    /* Enhance shadow on hover */
+}

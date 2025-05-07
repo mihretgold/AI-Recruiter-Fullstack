@@ -1,0 +1,79 @@
+/* JobDetails.css */
+.job-detail-container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    /* Thin border */
+    border-radius: 8px;
+    background-color: #ffffff;
+    /* White background for a clean look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    max-height: 80vh;
+    overflow-y: auto;
+    /* Enable vertical scrolling if content exceeds max height */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Add gap between elements */
+}
+
+.job-detail-container h2 {
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+    color: #333;
+    /* Darker text color for better readability */
+    font-weight: 600;
+    /* Slightly bolder font for headings */
+}
+
+.job-detail-container p {
+    margin: 0;
+    /* Remove default margin */
+    font-size: 1rem;
+    color: #555;
+    /* Slightly lighter text color */
+    line-height: 1.5;
+    /* Improve readability with line-height */
+}
+
+.job-detail-container p strong {
+    font-weight: 600;
+    /* Bolder text for labels */
+    color: #333;
+    /* Darker color for labels */
+}
+
+.apply-button,
+.rank-resumes-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #007bff;
+    /* Primary button color */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions */
+    margin-top: 10px;
+}
+
+.apply-button:hover,
+.rank-resumes-button:hover {
+    background-color: #0056b3;
+    /* Darker shade for hover effect */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    /* Enhance shadow on hover */
+}
+
+.rank-resumes-button {
+    background-color: #28a745;
+    /* Different color for secondary button */
+}
+
+.rank-resumes-button:hover {
+    background-color: #1e7e34;
+    /* Darker shade for hover effect */
+}

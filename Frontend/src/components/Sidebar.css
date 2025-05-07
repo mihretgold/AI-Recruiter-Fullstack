@@ -1,0 +1,7 @@
+/* Sidebar.css */
+.side-bar-container {
+    padding-top: 64px;
+    /* Push sidebar content below the navbar */
+    z-index: 900;
+    /* Lower than the navbar's z-index */
+}
