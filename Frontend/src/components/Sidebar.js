@@ -46,10 +46,6 @@ const Sidebar = () => {
             <ListItemText primary="View Scores" />
           </ListItem>
           <Divider />
-          <ListItem button component={Link} to="/schedule-interview">
-            <ListItemText primary="Schedule Interview" />
-          </ListItem>
-          <Divider />
           <ListItem button component={Link} to="/external-jobs">
             <ListItemText primary="External Jobs" />
           </ListItem>

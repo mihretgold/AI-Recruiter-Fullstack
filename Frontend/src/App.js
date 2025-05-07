@@ -23,7 +23,6 @@ import AddJob from "./pages/AddJob";
 import ApplyForm from "./components/ApplyForm";
 import ScoreJob from "./pages/ScoreJob";
 import RankJobs from "./pages/RankJobs";
-import ScheduleInterview from "./pages/ScheduleInterview";
 import ExternalJobListings from "./pages/ExternalJobListings";
 import Analytics from "./pages/Analytics";
 import EditJob from "./pages/EditJob";
@@ -93,10 +92,6 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/view-scores" element={<ViewScores />} />
-                <Route
-                  path="/schedule-interview"
-                  element={<ScheduleInterview />}
-                />
                 <Route
                   path="/external-jobs"
                   element={<ExternalJobListings />}
