@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AddJob.css";
 
 function AddJob() {
   const [job, setJob] = useState({
-    id: "",
     positionName: "",
     companyName: "",
     location: "",
@@ -15,57 +14,59 @@ function AddJob() {
     jobDescription: "",
   });
 
-  const [jobsList, setJobsList] = useState(() => {
-    // Retrieve jobs from local storage or initialize as an empty array
-    const savedJobs = localStorage.getItem("jobsList");
-    return savedJobs ? JSON.parse(savedJobs) : [];
-  });
-
   const [showToast, setShowToast] = useState(false);
-
-  useEffect(() => {
-    // Save the jobs list to local storage whenever it changes
-    localStorage.setItem("jobsList", JSON.stringify(jobsList));
-  }, [jobsList]);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setJob({ ...job, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
 
-    // Add a unique ID to the job using Date.now()
-    const newJob = { ...job, id: Date.now() };
+    try {
+      const response = await fetch('https://ai-recruiter-backend.onrender.com/api/jobs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(job)
+      });
 
-    // Add the new job with the ID to the list of jobs and save to local storage
-    setJobsList([...jobsList, newJob]);
+      if (!response.ok) {
+        throw new Error('Failed to add job');
+      }
 
-    // Show toast for success
-    setShowToast(true);
+      // Show toast for success
+      setShowToast(true);
 
-    // Optionally reset the form
-    setJob({
-      id: "",
-      positionName: "",
-      companyName: "",
-      location: "",
-      workType: "",
-      contractDetail: "",
-      salaryMin: "",
-      salaryMax: "",
-      currency: "",
-      jobDescription: "",
-    });
+      // Reset the form
+      setJob({
+        positionName: "",
+        companyName: "",
+        location: "",
+        workType: "",
+        contractDetail: "",
+        salaryMin: "",
+        salaryMax: "",
+        currency: "",
+        jobDescription: "",
+      });
 
-    // Hide toast after a few seconds
-    setTimeout(() => setShowToast(false), 3000);
+      // Hide toast after a few seconds
+      setTimeout(() => setShowToast(false), 3000);
+    } catch (error) {
+      console.error('Error adding job:', error);
+      setError('Failed to add job. Please try again.');
+    }
   };
 
   return (
     <div className="add-job-container">
       <h2>Create Job Listing</h2>
+      {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Position Name</label>
@@ -120,6 +121,7 @@ function AddJob() {
             onChange={handleChange}
             required
           >
+            <option value="">Select Contract Type</option>
             <option value="Fulltime">Fulltime</option>
             <option value="Parttime">Parttime</option>
             <option value="Intern">Intern</option>
