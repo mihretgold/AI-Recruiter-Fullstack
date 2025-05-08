@@ -45,7 +45,8 @@ pip install -r requirements.txt
    - Create a new project or select existing one
    - Go to Project Settings > Service Accounts
    - Generate new private key
-   - Save as `serviceAccountKey.json` in the backend directory
+   - For local development: Save as `serviceAccountKey.json` in the backend directory
+   - For production: Place the service account key at `/etc/secrets/serviceAccountKey.json`
 
 5. **Create Firestore Database**
    - In Firebase Console, go to Firestore Database
@@ -112,7 +113,7 @@ The test suite will:
 backend/
 ├── app.py                 # Main Flask application
 ├── requirements.txt       # Python dependencies
-├── serviceAccountKey.json # Firebase credentials
+├── serviceAccountKey.json # Firebase credentials (local development only)
 ├── test_endpoints.py     # API endpoint tests
 └── repositories/
     └── job_repository.py # Firebase job operations
@@ -131,7 +132,9 @@ All responses include a `success` boolean and either:
 
 ## Security
 
-- Firebase service account key is gitignored
+- Firebase service account key is stored securely:
+  - Local development: `serviceAccountKey.json` in backend directory
+  - Production: `/etc/secrets/serviceAccountKey.json`
 - CORS is enabled for frontend integration
 - Input validation is performed on all endpoints
 
