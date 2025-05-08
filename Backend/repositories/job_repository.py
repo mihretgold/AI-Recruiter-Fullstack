@@ -1,8 +1,8 @@
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+from firebase_admin import credentials, firestore
 import logging
 from datetime import datetime
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -11,14 +11,20 @@ logger = logging.getLogger(__name__)
 class JobRepository:
     def __init__(self):
         try:
-            # Initialize Firebase Admin SDK
-            cred = credentials.Certificate('serviceAccountKey.json')
-            firebase_admin.initialize_app(cred)
+            # Initialize Firebase with service account from secure location
+            service_account_path = '/etc/secrets/serviceAccountKey.json'
             
-            # Initialize Firestore client
+            # Check if running in production (secure path exists)
+            if os.path.exists(service_account_path):
+                cred = credentials.Certificate(service_account_path)
+            else:
+                # Fallback to local development path
+                cred = credentials.Certificate('serviceAccountKey.json')
+            
+            firebase_admin.initialize_app(cred)
             self.db = firestore.client()
             self.collection_name = "jobs"
-            logger.info("Successfully initialized Firebase connection")
+            logger.info("Firebase initialized successfully")
         except Exception as e:
             logger.error(f"Error initializing Firebase: {str(e)}")
             raise
